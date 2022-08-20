@@ -3,17 +3,16 @@ import Todo from "./Todo"
 
 const Form = () => {
     const[todo, setTodo] = useState({
-        inp1:"",
-        inp2:"" 
+        inp1:'',
+        inp2:'' 
     })
-    //const[todo1, setTodo1] = useState({})
     const[todos, setTodos] = useState([
         
     ])
     
     const handleChange = e => {
         console.log(e.target.value)
-        setTodo({[e.target.name]: e.target.value})
+        setTodo({...todo,[e.target.name]: e.target.value})
     }
     //const handleChange1 = e => setTodo1({[e.target.name]: e.target.value})
     const handleClick = e => {
@@ -25,7 +24,6 @@ const Form = () => {
             alert('el campo no puede estar vacio')
             return
         }*/
-        //const ingresar = todo + todo1;
         setTodos([...todos, todo]);
     }
 
@@ -44,9 +42,14 @@ const Form = () => {
             <button onClick={handleClick}>agregar</button>
         </form>
             {
+                /*todos.map((value, index) => (<h3>{value.inp1} - {value.inp2}</h3>))*/
+
+
+                
                 todos.map((value, index) => (
-                    <Todo todo={value.todo} key={index} index={index} deleteTodo={deleteTodo}/>
+                    <Todo todo={value.inp1} todo1={value.inp2} key={index} index={index} deleteTodo={deleteTodo}/>
                 ))
+                
             }
         </>
     )
